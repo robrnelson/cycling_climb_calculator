@@ -14,24 +14,26 @@ st.write("Compare the speed and time of two riders on a steady climb.")
 
 # --- COURSE SETTINGS ---
 st.header("Course Settings")
+# Keeping sliders for the course as they are great for quick "what-if" scenario adjustments
 distance_km = st.slider("Climb Distance (km)", min_value=0.5, max_value=25.0, value=5.0, step=0.1)
 gradient_pct = st.slider("Average Gradient (%)", min_value=0.1, max_value=20.0, value=7.0, step=0.1)
 use_aero = st.toggle("Include Air Resistance", value=True)
 
 st.divider()
 
-# --- RIDER SETTINGS (Side-by-side on desktop, stacked on mobile) ---
+# --- RIDER SETTINGS ---
 col1, col2 = st.columns(2)
 
 with col1:
     st.subheader("🔴 Rider A")
-    power_a = st.slider("Power (Watts) - A", 100, 600, 250, key="pA")
-    weight_a = st.slider("Weight (kg) - A", 40, 120, 70, key="wA")
+    # Swapped sliders for number_inputs to allow direct typing
+    power_a = st.number_input("Power (Watts) - A", min_value=50, max_value=1200, value=250, step=5)
+    weight_a = st.number_input("Weight (kg) - A", min_value=30.0, max_value=150.0, value=70.0, step=0.5)
 
 with col2:
     st.subheader("🔵 Rider B")
-    power_b = st.slider("Power (Watts) - B", 100, 600, 300, key="pB")
-    weight_b = st.slider("Weight (kg) - B", 40, 120, 80, key="wB")
+    power_b = st.number_input("Power (Watts) - B", min_value=50, max_value=1200, value=300, step=5)
+    weight_b = st.number_input("Weight (kg) - B", min_value=30.0, max_value=150.0, value=80.0, step=0.5)
 
 # --- CALCULATION FUNCTION ---
 def calculate_speed_and_time(power, weight, distance, gradient, aero_on):

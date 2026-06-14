@@ -5,7 +5,7 @@ import numpy as np
 GRAVITY = 9.81      # m/s^2
 RHO = 1.225         # Air density in kg/m^3 (sea level)
 CDA = 0.32          # Drag area in m^2 (typical road climbing position)
-BIKE_WEIGHT = 8.0   # kg
+BIKE_WEIGHT = 0.0   # kg
 
 st.set_page_config(page_title="Climb Calculator", layout="centered")
 
